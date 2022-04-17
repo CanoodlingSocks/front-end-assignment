@@ -22,8 +22,8 @@ namespace mvc.Controllers
         {
             StartPage startPageView = new StartPage
             {
-                //PinnedArticles = ArticleService.Instance.GetPinnedArticles(),
-                ArticleSummary = ArticleService.Instance.GetLatestArticles(5) 
+                PinnedArticles = ArticleService.Instance.GetPinnedArticles(),
+                ArticleSummary = ArticleService.Instance.GetLatestArticles(5)
             };
 
             return View(startPageView);

@@ -1,0 +1,25 @@
+﻿@using System.Text.RegularExpressions
+@using mvc.Models;
+@{
+    foreach (var pinnedArticles in Model.PinnedArticles)
+    {
+        var regexId = new Regex(@"[\s+]");
+        string articles = regexId.Replace(pinnedArticles.Title, "-").ToString();
+        string url = $"{pinnedArticles.Id}-{articles}";
+
+        <div class="pinned-articles">
+            <a asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
+                <div id="pinned-title">
+                    <h3>@pinnedArticles.Title</h3>
+                </div>
+                <div id="pinned-date">
+                    @pinnedArticles.Created
+                </div>
+                <img src="../images/@pinnedArticles.ImageName" />
+                <div id="pinned-author">
+                    @pinnedArticles.AuthorFirstName @pinnedArticles.AuthorFirstName
+                </div>
+            </a>
+        </div>
+    }
+}
