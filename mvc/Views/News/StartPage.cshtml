@@ -1,8 +1,95 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿@using System.Text.RegularExpressions
+@using mvc.Models;
+@model mvc.Models.StartPage;
+
+@*Fyll sidan med data för att sen kunna manipulera innehållet
+    Jag tror jag har fått bilder att fungera då jag ser i inspektorn att bilderna får olika namn o länkas till article/images
+
+    - Alla divar inom diven med classnamn "article-summary" får ett eget id som jag kan manipulera sen med CSS är tanken
+
+    <ArticleSummaryDTO> (GetLatestArticles()) Jag utgår från att det är denna DTO som man ska använda för latestarticles??
+    - Title, Intro, Authors First+Lastname, Created, ImageName, Pinned <-- Osäker på hur jag använder pinned
+    - Tog bort ImageName då exempelbilden inte hade med den, samt måste komma på hur jag truncate:ar intro texten med ellipsis
+    - Har problem med att sätta en p tag innuti summary-boxen så att den alltid har samma plats, kanske får vara lite kreativ och sätta den utanför på nåt sätt
+
+    <PinnedArticles>
+
+    - Efter att jag fick summary delen att funka så har jag satt in samma kod här men den borde inte synas då jag inte implementerat
+    bool Pinned i Admin delen än
+
+    <Reklam>
+    - Skapa en länk som ska fungera utanför localhost domänen, använd _blank för att öppna ny flik
+    - Skriva en script tag med funktion för att slumpa bilden funkade INTE, skriver jag funktionen i React ist? <-- Daniel kom till räddningen
+
+
 *@
 @{
+    //foreach (var pinnedArticles in Model.PinnedArticles)
+    //{
+    //    var regexId = new Regex(@"[\s+]");
+    //    string articles = regexId.Replace(pinnedArticles.Title, "-").ToString();
+    //    string url = $"{pinnedArticles.Id}-{articles}";
+
+    //    <div class="pinned-articles">
+    //        <a asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
+    //            <div id="title">
+    //                <h3>@pinnedArticles.Title</h3>
+    //            </div>
+    //            <div id="date">
+    //                @pinnedArticles.Created
+    //            </div>
+    //            <img src="../images/@pinnedArticles.ImageName" />
+    //            <div id="author">
+    //                @pinnedArticles.AuthorFirstName @pinnedArticles.AuthorFirstName
+    //            </div>
+    //        </a>
+    //    </div>
+    //}
+    <div class="article-p-tag">
+    <p>De senaste nyheterna</p>
+    </div>
+    foreach (var article in Model.ArticleSummary)
+    {
+        var regexId = new Regex(@"[\s+]");
+        string articles = regexId.Replace(article.Title, "-").ToString();
+        string url = $"{article.Id}-{articles}";
+
+    <div class="article-summary-box">
+                <div id="date">
+                    @article.Created
+                </div>
+                <span id="summary-text">
+                <span id="title">
+                    @article.Title
+                </span>
+                <span id="intro">
+                    @article.Intro
+                </span>
+                </span>
+                <a id="read-more-btn" asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
+                    <button>Läs Mer <i class='fas fa-arrow-right'></i></button>
+                </a>
+            <hr>
+       
+    </div>
+    }
+
+
+    <div class="ad-container">
+        @{
+            string landscape = new Random().Next(1, 4).ToString();
+            string portrait = new Random().Next(1, 4).ToString();
+        }
+        <picture id="ad-picture">
+            <a href="https://www.buyawesomestuff.com/" target="_blank">
+                <img src="../ads/reklam-@landscape-landscape-470w.png" alt="" />
+                <source media="(min-width: 1025px)" srcset="~/ads/reklam-@portrait-portrait-320w.png">
+                <source media="(min-width: 1024px) and (max-width: 1399px)" srcset="~/ads/reklam-@landscape-landscape-940w.png">
+                <source media="(min-width: 700px) and (max-width: 1023px)" srcset="~/ads/reklam-@landscape-landscape-940w.png">
+                <source media="(min-width: 501px) and (max-width: 699px)" srcset="~/ads/reklam-@landscape-landscape-470w.png">
+            </a>
+        </picture>
+    </div>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 }
-
-
-<h3>Startsidan</h3>

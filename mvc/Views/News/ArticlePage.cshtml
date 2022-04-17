@@ -1,0 +1,83 @@
+﻿@model Service.Models.ArticleDTO;
+
+@*Ska jag använda ArticleDTO eller ska jag redan nu implementera blocks?
+    - Blocks har olika typer och en siffra som indikerar vilken ordning dom kommer i
+    - Simon gav tips att använda if-satser för att checka types direkt på sidan i en container
+    - Ska man köra foreachen inuti eller utanför container-divarna??
+*@
+@{
+    <p>This is the article page</p>
+
+    foreach (var block in Model.Blocks)
+    {
+        if (block.Type == "image")
+        {
+            <div id="image">
+                <p>@block.Order</p>
+                <img src="../images/@block.Value" />
+            </div>
+        }
+        else if (block.Type == "quote")
+        {
+            <div id="quote-block">
+                <p>@block.Order</p>
+                <p>@block.Value</p>
+            </div>
+        }
+        else
+        {
+            <p>@block.Order @block.Value</p>
+        }
+        <hr />
+
+        foreach (var comment in Model.Comments)
+        {
+            <p>
+                @comment.CommentedBy
+            </p>
+            <p>
+                @comment.Created
+            </p>
+            <p>
+                @comment.Value
+            </p>
+        }
+    }
+    @*
+        - Osäker på hur denna funkar, ska den vara en form som tar in data?
+        - Har den redan data och jag behöver bara matcha upp kommentarerna mot rätt artikel? <-- Troligen
+    *@
+
+    <div class="commentary-form">
+        <form>
+            <p>This is just an example</p>
+            <label for="email">Email</label>
+            <input type="email" placeholder="john.doe@example.com">
+            <label for="comment-box">Comment</label>
+            <input type="text">
+            <input type="submit" text="Submit">
+        </form>
+        <hr>
+        </div>
+
+    // ----------------- TEST ---------------------------------------------------------
+    //@using (Html.BeginForm("Form", "ArticlePage", FormMethod.Post))
+    //{
+    //    foreach (var comment in Model.Comments)
+    //    {
+    //        <h1>
+    //            <b>Name:</b>  @ViewBag.Name <br />
+    //        </h1>
+    //        <hr />
+    //        <table>
+    //            <tr>
+    //                <td>Enter Email: </td>
+    //                <td>@Html.TextBoxFor(x => comment.CommentedBy)</td>
+    //            </tr>
+    //            <tr>
+    //                <td colspan="2"><input type="submit" value="Submit" /></td>
+    //            </tr>
+    //        </table>
+    //    }
+    // ----------------- END OF TEST -----------------------------------------------------
+}

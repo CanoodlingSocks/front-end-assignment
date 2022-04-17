@@ -7,12 +7,27 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/mvc.styles.css" asp-append-version="true" />
 </head>
+<header>
+    <div class="header-items">
+        <div id="web-name">
+            <p>Blåatoppens Dagblad</p>
+        </div>
+        <label class="toggle-btn">
+            <input type="checkbox" />
+            <span class="slider">Byt Tema</span>
+        </label>
+    </div>
+</header>
 <body>
     <div class="container">
-        <a href="https://localhost:7208/Admin">Admin</a>
         <main role="main">
             @RenderBody()
         </main>
     </div>
+
+    <footer>
+        <div class="footer-items"></div>
+        <a href="https://localhost:7208/Admin">Admin</a>
+    </footer>
 </body>
 </html>

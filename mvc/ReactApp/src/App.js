@@ -6,7 +6,8 @@ export default class App extends Component {
 
     render() {
         return (
-            <p>Din admin-app!</p>
+            <p>Hello Lela!</p>
+            
             
         );
   }

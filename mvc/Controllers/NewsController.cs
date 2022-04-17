@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using mvc.Models;
+using Service.Services;
+using System.Text.RegularExpressions;
 
 namespace mvc.Controllers
 {
@@ -6,14 +9,42 @@ namespace mvc.Controllers
     {
         private readonly ILogger<NewsController> _logger;
 
+        //[Route("")]
+        //[Route("News/{articleId}")]
+        //public IActionResult Index
         public NewsController(ILogger<NewsController> logger)
         {
             _logger = logger;
         }
 
+        //GET /
         public IActionResult StartPage()
         {
-            return View();
+            StartPage startPageView = new StartPage
+            {
+                //PinnedArticles = ArticleService.Instance.GetPinnedArticles(),
+                ArticleSummary = ArticleService.Instance.GetLatestArticles(5) 
+            };
+
+            return View(startPageView);
         }
+
+        //GET /ArticlePage
+        [HttpGet("[controller]/{urlId}")]
+        public IActionResult ArticlePage(string urlId)
+        {
+            var id = new Regex(           // Regex kod taget från Daniel eller Alex eller vem han nu fick tag på den cuz lord knows im not touching regex
+                "^([0-9A-Fa-f]{8}[-]" +
+                "[0-9A-Fa-f]{4}[-]" +
+                "[0-9A-Fa-f]{4}[-]" +
+                "[0-9A-Fa-f]{4}[-]" +
+                "[0-9A-Fa-f]{12})");
+
+            Guid articleId = Guid.Parse(id.Match(urlId).Value);
+
+            var articlePageView = ArticleService.Instance.GetById(articleId);
+            return View(articlePageView);
+        }
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace Service.Models
 {
     public class ArticleSummaryDTO
@@ -13,6 +15,7 @@ namespace Service.Models
 
         public string AuthorLastName { get; set; }
 
+        //[DisplayFormat(DataFormatString = "{0:HH//mm}")]
         public DateTime? Created { get; set; }
 
         public string ImageName { get; set; }

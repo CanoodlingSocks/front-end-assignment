@@ -1,18 +1,179 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+/* Desktop first approach
+    På dokumentet står det (<= 1024px);
+*/
+@media  (max-width: 1024px) {
+  .article-summary {
+      flex-direction: row;
+  }
+
+  .pinned-articles {
+      flex-direction: row;
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* På dokumentet står det (< 700px) */
+@media (max-width: 699px) and (min-width: 360px) {
+
+    .article-summary {
+        flex-direction: column;
+
+    }
+
+    .pinned-articles {
+        flex-direction: column;
+
+    }
+    /* background-color: green;*/
+    /* Byt tema texten ska döljas */
+
 }
 
-body {
-  margin-bottom: 60px;
+html, body {
+
+    margin: 0;
+    padding: 0;
+    background-color: ;
 }
+
+header {
+    padding: 10px;
+    display: flex;
+    height: 100%;
+    margin: 0px auto;
+    background-color: #548052;
+    color: white;
+}
+
+/* -------------- THEME TOGGLE BTN --------------*/
+
+
+
+/* ----------- END OF THEME TOGGLE BTN ----------*/
+
+/* ------------------- FOOTER --------------------*/
+footer {
+    display: flex;
+    height: 100px;
+    margin: 0px auto;
+    background-color: #14342b;
+    color: white;
+}
+/* ---------------- END OF FOOTER ------------------*/
+
+/* --------------- PINNED ARTICLES -----------------*/
+
+.pinned-articles {
+    display: grid;
+    max-width: calc(100% - 40px);
+    background-color: blueviolet;
+}
+
+/* img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+} */
+
+/* --------------- END OF PIN.ART. -----------------*/
+
+
+/* --------------- ARTICLES SUMMARY ----------------*/
+/* .article-summary-box, a{
+    display: grid;
+    align-items: baseline;
+    height: 106px;
+} */
+
+.article-summary-box {
+    display: grid;
+    grid-template-areas:
+    "date article btn ads";
+    padding: 10px;
+    /* grid-template-rows: 60px 1fr 60px; */
+    /* grid-template-columns: 20% 1fr 15%; */
+    grid-template-columns: auto auto auto;
+    text-decoration: none;
+    margin:0;
+    justify-content:left;
+}
+
+#date {
+    flex: none;
+    /* display: inline-block; */
+    margin-right: 0.5rem;
+    width: 3.5rem;
+    
+    grid-area: date;
+    text-align: center;
+    
+    color: #999; /* Tills jag klurar ut hur jag fixar Timestampen kör jag en fejk muted text */
+    
+}
+
+.article-p-tag {
+    /* background-color: red;
+    border-style: solid;
+    border-color: black; */
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+}
+
+#summary-text{
+    grid-area: article;
+    justify-content: flex-start;
+    width: 500px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    
+}
+
+#title {
+    
+    /* display: inline-block; */
+    /* padding-top: 1.25rem; */
+    font-weight: bold;
+
+}
+
+#intro {
+    
+    margin-top: 0.35rem;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+    
+    direction: ltr;
+}
+
+button {
+
+    text-align: center; 
+    margin: auto;
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color:#548052;
+}
+
+#read-more-btn {
+    grid-area: btn;
+    display: flex;
+    text-decoration: none;
+    justify-content:center;
+    /* align-items: center; */
+    
+}
+
+/* ----------------- END OF ART.SUM. ----------------*/
+
+/* ---------------------- ADS -----------------------*/
+
+.ad-container {
+    grid-area: ads;
+    
+}
+
+/* ------------------ END OF ADS --------------------*/
