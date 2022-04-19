@@ -13,8 +13,8 @@
             <p>Blåatoppens Dagblad</p>
         </div>
         <label class="toggle-btn">
-            <input type="checkbox" />
-            <span class="slider">Byt Tema</span>
+            <input class="input" type="checkbox" />
+            <span class="slider">Byt tema</span>
         </label>
     </div>
 </header>
@@ -27,7 +27,34 @@
 
     <footer>
         <div class="footer-items"></div>
-        <a href="https://localhost:7208/Admin">Admin</a>
+            <div id="adress-section">
+                <div id="adress-title">
+            <p>Blåatoppens Dagblad</p>
+                </div>
+            <div id="adress">
+                <p>Bettorpsgatan 10</p>
+                <p>703 69 Örebro</p>
+            </div>
+            </div>
+            <div class="about-us-section">
+            <div id="about-us-title">
+                <p>Om oss</p>
+            </div>
+            <div id="about-us">
+                <p>
+                   Dagstidningen Blåatoppens dagblad grundades 1821. Tidningen har under 100 år varit den mest lästa tidningen i hela Blåatoppen. 
+                   Ambitionen med tidningen har sedan dess grundades varit att tillhandahålla medborgarna med nyhetsrapportering av den allra högsta kvalitén.
+                   Blåatoppens dagblad finns idag tillgänglig som papperstidning, e-tidning, sajt, ljud-tidning och VR-upplevelse.
+               </p>
+            </div>
+            </div>
+
+        <a id="admin-lnk" href="https://localhost:7208/Admin">Admin</a>
     </footer>
 </body>
 </html>
+
+@*
+    Vart många divar på footer delen men det var för att jag hade svårt att individuellt selecta dom titles som ska ha en större font än resten
+    finns säkert nåt bättre sätt att göra detta but i am so fricken tired plz have mercy
+*@
