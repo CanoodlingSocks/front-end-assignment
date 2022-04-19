@@ -1,1 +1,13 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
 
+.admin-header {
+    width: auto;
+}
+
+.navbar {
+background-color: yellowgreen;
+    
+}
