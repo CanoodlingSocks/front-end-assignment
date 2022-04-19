@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Outlet, Link } from 'react-router-dom';
 import './custom.css'
 
 export default class App extends Component {
@@ -6,9 +7,19 @@ export default class App extends Component {
 
     render() {
         return (
-            <p>Hello Lela!</p>
-            
-            
+            <main>
+                <header>
+                    <h1 class="admin-header">Blåatoppens dagblad ADMIN</h1>
+                </header>
+                <div class="article-links">
+                    <nav class="navbar">
+                        <Link to="/articles">Articles</Link>
+                        <br />
+                        <Link to="/images">Images</Link>
+                    </nav>
+                </div>
+                <Outlet />
+            </main>
         );
-  }
+    }
 }
