@@ -1,19 +1,42 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+
+
+import AdminArticlesComponent from './components/admin-articles-component.js';
 
 const baseUrl = "Admin";
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
+ <React.StrictMode>
   <BrowserRouter basename={baseUrl}>
-    <App />
-  </BrowserRouter>,
-  rootElement);
+      <Routes>
+        <Route path="/" element={<App />}> 
+          <Route path=":admin/articles" element={<AdminArticlesComponent />} >
+            </Route>
+            </Route>
+
+          <Route
+      path="*"
+      element={
+        <main style={{ padding: "1rem" }}>
+          <p>There's nothing here!</p>
+        </main>
+          }
+         />
+      </Routes>
+  
+  </BrowserRouter>
+</React.StrictMode>,
+   rootElement);
+
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

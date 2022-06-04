@@ -1,28 +1,6 @@
 ﻿@model mvc.Models.StartPage;
 
-@*Fyll sidan med data för att sen kunna manipulera innehållet
-    Jag tror jag har fått bilder att fungera då jag ser i inspektorn att bilderna får olika namn o länkas till article/images
 
-    - Alla divar inom diven med classnamn "article-summary" får ett eget id som jag kan manipulera sen med CSS är tanken
-
-    <ArticleSummaryDTO> (GetLatestArticles()) Jag utgår från att det är denna DTO som man ska använda för latestarticles??
-    - Title, Intro, Authors First+Lastname, Created, ImageName, Pinned <-- Osäker på hur jag använder pinned
-    - Tog bort ImageName då exempelbilden inte hade med den, samt måste komma på hur jag truncate:ar intro texten med ellipsis
-    - Har problem med att sätta en p tag innuti summary-boxen så att den alltid har samma plats, kanske får vara lite kreativ och sätta den utanför på nåt sätt
-
-    - Lyckades lösa ovanstående problem med att skapa upp en partial view och rendera in den inuti article containern då den inte lät mig skapa en div runt själva foreach-loopen!
-
-    <PinnedArticles>
-
-    - Efter att jag fick summary delen att funka så har jag satt in samma kod här men den borde inte synas då jag inte implementerat
-    bool Pinned i Admin delen än
-
-    <Reklam>
-    - Skapa en länk som ska fungera utanför localhost domänen, använd _blank för att öppna ny flik
-    - Skriva en script tag med funktion för att slumpa bilden funkade INTE, skriver jag funktionen i React ist? <-- Daniel kom till räddningen
-
-
-*@
 @{
 
     <div class="pinned-articles-container">
@@ -33,7 +11,7 @@
     <br />
     <div class="article-container">
         <div class="article-p-tag">
-            <p>De senaste nyheterna</p>
+            <h3>De senaste nyheterna</h3>
         </div>
 
             @{

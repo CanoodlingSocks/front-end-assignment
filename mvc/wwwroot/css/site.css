@@ -1,331 +1,434 @@
-
-/* Desktop first approach
-    På dokumentet står det (<= 1024px);
-*/
-@media  (max-width: 1024px) {
-  /* .article-summary {
-
-  } */
-
-  .pinned-articles {
-      margin: 25px 15 px;
-      width: 30%;
-  }
-   img {
-       height: 200px;
-       overflow: hidden;
-   }
-}
-
-/* På dokumentet står det (< 700px) */
-@media (max-width: 699px) and (min-width: 360px) {
-
-    .article-summary {
-        flex-direction: row;
-
-    }
-
-    .pinned-articles-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .pinned-articles {
-        margin: 25px 10px;
-        width: 45%;
-    }
-    /* background-color: green;*/
-    /* Byt tema texten ska döljas */
-
+* {
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-
-    margin: 0;
-    padding: 0;
     background-color: #e5e7e5;
 }
 
-header, .header-items {
-    padding: 10px;
-    display: block;
-    height: 100%;
-    margin: 0px auto;
+/* DARK MODE  */
+
+.darkmode {
+    background-color: #14342b;
+}
+
+.darkmode footer {
+    background-color: #677967;
+}
+
+.darkmode .pinned-articles {
+    background-color: #677967;
+    color: #ffffff;
+}
+
+.darkmode .text-content {
+    color: #ffffff;
+}
+
+.darkmode .text-content h5 {
+    filter: opacity(100%);
+}
+
+.darkmode .text-content p {
+    filter: opacity(100%);
+}
+
+.darkmode .article-container{
+    background-color: #677967;
+    color: #ffffff;
+}
+
+/* NAVBAR */
+
+header {   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
     background-color: #548052;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
-
-/* -------------- THEME TOGGLE BTN --------------*/
-.toggle-btn {
-   float: right;
-}
-
-@media (prefers-color-scheme: dark) {
-
-    html, body {
-        background-color: #14342b;
-    }
-
-    #text-content {
-        background-color: #677967;
-        color: white;
-    }
-
-    .article-container {
-        background-color: #677967;
-        color: white;
-    }
-
-}
-
-/* ----------- END OF THEME TOGGLE BTN ----------*/
-
-
-/* --------------- PINNED ARTICLES -----------------*/
-
+/* PINNED ARTICLES  */
 .pinned-articles-container {
+
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-gap: 10px;
-    width: fit-content;
-
-
-    /*
-    När jag har fixat flexbox och responsive kan jag köra allt center
-    men tillsvidare så att det ser "snyggt" ut när man kör splitscreen
-    kommer denna vara avkommenterad
-    justify-items: center;
-
-    */
-
-    max-width: calc(100% - 40px);
-    /* text-decoration: none; */
-    /* flex-direction: column; */
-    /* margin: 0 auto 75px; */
-    margin: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: .5em;
+    align-items: stretch;
+    margin: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 0;
 }
 
-
-img {
-    /* width: 100%; */
-    /* height: 100%; */
-    /* object-fit: fill; */
-    width: 200px;
-    height: 100px;
-
+.pinned-articles{
+    align-items: center;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 5%;
 }
 
-#text-content {
-    text-decoration: none;
-    background-color: white;
-    width: 200px;
-    height: 100px;
-
-    overflow: hidden;
+.text-content {
+    margin: .5em;
+    padding-bottom: 1em;
+    color: black;
 }
 
 #pinned-title {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 2vw;
 }
 
 #pinned-author {
-    text-align: right;
-    color: #999;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: .5em;
+    margin-bottom: .5em;
 }
 
-img, #text-content {
-    border-radius: 5px;
+a {
+    text-decoration: none;
 }
 
-#pinned-date{
-    color: #999;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
+img {
+    width: 100%;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+}
+
+.text-content h5 {
+    filter: opacity(50%);
+}
+
+.text-content p {
+    filter: opacity(50%);
 }
 
 
-/* --------------- END OF PIN.ART. -----------------*/
-
-
-/* --------------- ARTICLES SUMMARY ----------------*/
-/* .article-summary-box, a{
-    display: grid;
-    align-items: baseline;
-    height: 106px;
-} */
-
+/* ARTICLE SUMMARIES  */
 .article-container {
-    margin-left: 20px;
-    width: 665px;
-    background-color: white;
+    background-color: #ffffff;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding: .5em;
+    padding-bottom: 0;
+    margin-bottom: 2em;
+    font-family: 'Times New Roman', Times, serif;
 }
+
 .article-summary-box {
     display: grid;
     grid-template-areas:
     "date article btn ads";
     padding: 10px;
-    /* grid-template-rows: 60px 1fr 60px; */
-    /* grid-template-columns: 20% 1fr 15%; */
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 10% 2fr 10%;
     text-decoration: none;
-    margin:0;
-    justify-content:left;
-    /* justify-items: center; */
-}
-
-#date {
-    flex: none;
-    /* display: inline-block; */
-    margin-right: 0.5rem;
-    width: 3.5rem;
-
-    margin-top: 0.8rem;
-    grid-area: date;
-    text-align: center;
-
-
-    color: #999; /* Tills jag klurar ut hur jag fixar Timestampen kör jag en fejk muted text */
+    font-size: 2vw;
+    padding: 0;   
 
 }
 
-.article-p-tag {
-    /* background-color: red;
-    border-style: solid;
-    border-color: black; */
-    margin-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 23px;
+.sum-text {
+    padding: .5em;
 }
 
-#summary-text{
-    grid-area: article;
-    justify-content: flex-start;
-    width: 500px;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
-
-}
-
-#title {
-
-    /* display: inline-block; */
-    /* padding-top: 1.25rem; */
-    font-weight: bold;
-
+#read-more-btn button {
+    width: 6em;
+    padding: .2em;
+    margin-bottom: .5em;
+    margin-right: 1.5em;
+    
 }
 
 #intro {
-
-    margin-top: 0.35rem;
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space:nowrap;
-
-    direction: ltr;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+margin-right: 1em;
+direction: ltr;
+max-width: 150px;
+filter: opacity(50%);
 }
 
-button {
+#date {
+    filter: opacity(50%);
+}
 
-    text-align: center;
-    cursor: pointer;
-    margin: auto;
-    border: none;
-    padding: 10px;
+#date, a {
+    align-self: center; /* Vertixal */
+    justify-self: center; /* Horizontal */
+    
+}
+
+.article-summary-box button {
+    background-color: #548052;
     color: white;
-    background-color:#548052;
 }
 
-#read-more-btn {
-    grid-area: btn;
-    display: flex;
-    text-decoration: none;
-    justify-content:center;
-    /* align-items: center; */
 
-}
-
-/* ----------------- END OF ART.SUM. ----------------*/
-
-/* ---------------------- ADS -----------------------*/
-
-.ad-container {
-    grid-area: ads;
-    display: flex;
-    justify-content: right;
-}
-
-/* ------------------ END OF ADS --------------------*/
-
-/* ------------------- FOOTER --------------------*/
-
+/* FOOTER  */
 footer {
-    display: inline-block;
+    
+    display: grid;
+    position: relative;
+    padding: 10px;
+    grid-template-columns: auto auto auto;
+    text-decoration: none;
+    font-size: 2vw;
+    padding: 0;   
     height: 100px;
     margin: 0px auto;
     background-color: #14342b;
     color: white;
-
+    
     padding: 10px;
-
+    
     height: 100%;
     margin: 0px auto;
-
+    
     font-family: Arial, Helvetica, sans-serif;
-
-
+    
 }
 
-.footer-items {
-    position: absolute;
-    bottom: 0;
-    left: 0px;
-    height: 60px;
-    /* Height of the footer */
-    width: 100%;
-
-}
 #adress-section {
-    display: block;
-    float: left;
-       
-        width:auto;
-        /* background-color :green; */
-
-}
-
-#adress-title {
- font-size: 18px;
-}
-
-#adress {
-    font-size: 14px;
+    margin: .5em;
 }
 
 .about-us-section {
-
-    text-align:left;
-              float: right;
-       
-        width: 500px;
-        /* background-color: red; */
-}
-
-#about-us-title {
-    font-size: 18px;
-}
-
-#about-us {
-    font-size: 14px;
+    margin: .5em;
+    width: 350px;
+    
 }
 
 #admin-lnk {
-    text-decoration: none;
+    color: #ffff;
+    text-shadow: 2px 1px blue;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: .5em;
 }
-/* ---------------- END OF FOOTER ------------------*/
+
+/* MEDIA QUERIES  */
+
+/* VERY SMALL SCREENS  */
+@media only screen and (max-width: 415px) {
+    
+    .pinned-articles-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+    
+    .article-container {
+        margin-left: .5em;
+        margin-right: .5em;
+    }
+    
+    .article-summary-box {
+        
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        font-size: 2vw;
+        padding: 0; 
+        margin-left: 1em;
+        margin-right: 1em;
+        
+    }
+    
+    #date {
+        align-self:baseline; /* Vertixal */  
+        padding-left: .5em;    
+    }
+    
+    #read-more-btn button {
+        width: 23em;
+        margin-bottom: .5em;
+        margin-left: 2.2em;
+        
+    }
+    
+    footer {
+        display: flex;
+        flex-direction: column;
+        margin: .5em;
+        
+    }
+
+    #adress-section #adress-title {
+        font-size: large;
+    }
+
+    #adress {
+        margin-top: .5em;
+        font-size: 10px;
+    }
+
+    .about-us-section {
+        margin-top: .5em;
+        margin-bottom: .5em;
+    }
+
+    #about-us-title {
+        font-size: large;
+        margin-top: .5em;
+        margin-bottom: .2em;
+    }
+
+    #about-us {
+        font-size: 10px;
+    }
+
+    #admin-lnk {
+        float: right;
+        padding-right: 1em;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .pinned-articles-container {
+
+        grid-template-columns: 1fr 1fr;
+        margin-left: 1em;
+        margin-right: 1em;
+        
+    }
+
+    .article-summary-box button {
+        
+        width: 6em;
+        margin: 1em;
+        padding: .5em;
+        margin-right: 3em;
+    }
+
+    
+    footer {
+        padding: 2em;    
+        position: relative;
+        
+    }
+
+    #adress-section #adress-title {
+        font-size: Small;
+    }
+
+    
+
+    #adress {
+        margin-top: .5em;
+        font-size: 10px;
+    }
+
+    .about-us-section {
+        width: 250px;
+    }
+
+    #about-us-title {
+        font-size: Small;
+        margin-bottom: .5em;
+       
+    }
+
+    #about-us {
+        font-size: 10px;
+    }
+
+    #admin-lnk {
+        position: absolute;
+        padding-right: 1em;
+        bottom: 0;
+        right: 0;
+        padding-bottom: 1em;
+    }
+ 
+ }
+ @media screen and (min-width: 900px) {
+
+    header {
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #web-name {
+        font-size: 47px;
+    }
+
+    .pinned-articles-container {
+
+        margin-left: 10em;
+        margin-right: 10em;
+        
+    }
+
+    #pinned-title {
+        font-size: 23px;
+    }
+
+    .article-container {
+        margin-left: 10em;
+        margin-right: 10em;
+        
+    }
+
+    .article-summary-box button {
+        
+        width: 5em;
+        margin: 1em;
+        padding: .5em;
+        margin-right: 3em;
+    }
+
+    .sum-text {
+        font-size: 18px;
+    }
+
+    
+    footer {
+        justify-content: center;
+        padding: 1em;    
+        position: relative;
+        
+    }
+    
+    #adress {
+        font-size: small;
+    }
+
+    .about-us-section {
+        width: 406px;
+    }
+
+    #about-us-title {
+        font-size: medium;
+        margin-bottom: .5em;
+       
+    }
+
+    #about-us {
+        font-size: 14px;
+    }
+
+    #admin-lnk {
+        position: absolute;
+        padding-right: 1em;
+        bottom: 0;
+        right: 0;
+        padding-bottom: 1em;
+    }
+
+    #date {
+        font-size: 18px;
+    }
+ 
+ }
+
 

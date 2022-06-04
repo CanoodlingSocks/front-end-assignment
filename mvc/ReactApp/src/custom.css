@@ -9,5 +9,5 @@ main {
 
 .navbar {
 background-color: yellowgreen;
-    
+justify-content: space-around;
 }

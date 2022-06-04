@@ -6,51 +6,64 @@
     <title>@ViewData["Title"] - mvc</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/mvc.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <header>
-    <div class="header-items">
-        <div id="web-name">
-            <p>Blåatoppens Dagblad</p>
-        </div>
-        <label class="toggle-btn">
-            <input class="input" type="checkbox" />
-            <span class="slider">Byt tema</span>
-        </label>
+
+    <div id="web-name">
+        <p>Blåatoppens Dagblad</p>
     </div>
+    <label class="toggle-btn">
+        <i id="toggle" class="fa fa-toggle-off" type="checkbox" onclick="themeToggle(this)"></i>
+        <span class="slider">Byt tema</span>
+    </label>
 </header>
 <body>
     <div class="container">
-        <main role="main">
+        
             @RenderBody()
-        </main>
+       
     </div>
 
     <footer>
-        <div class="footer-items"></div>
-            <div id="adress-section">
-                <div id="adress-title">
-            <p>Blåatoppens Dagblad</p>
-                </div>
+        <div id="adress-section">
+            <div id="adress-title">
+                <p>Blåatoppens Dagblad</p>
+            </div>
             <div id="adress">
                 <p>Bettorpsgatan 10</p>
                 <p>703 69 Örebro</p>
             </div>
-            </div>
-            <div class="about-us-section">
+        </div>
+        <div class="about-us-section">
             <div id="about-us-title">
                 <p>Om oss</p>
             </div>
             <div id="about-us">
                 <p>
-                   Dagstidningen Blåatoppens dagblad grundades 1821. Tidningen har under 100 år varit den mest lästa tidningen i hela Blåatoppen. 
-                   Ambitionen med tidningen har sedan dess grundades varit att tillhandahålla medborgarna med nyhetsrapportering av den allra högsta kvalitén.
-                   Blåatoppens dagblad finns idag tillgänglig som papperstidning, e-tidning, sajt, ljud-tidning och VR-upplevelse.
-               </p>
+                    Dagstidningen Blåatoppens dagblad grundades 1821. Tidningen har under 100 år varit den mest lästa tidningen i hela Blåatoppen.
+                    Ambitionen med tidningen har sedan dess grundades varit att tillhandahålla medborgarna med nyhetsrapportering av den allra högsta kvalitén.
+                    Blåatoppens dagblad finns idag tillgänglig som papperstidning, e-tidning, sajt, ljud-tidning och VR-upplevelse.
+                </p>
             </div>
             </div>
-
+            <div>
         <a id="admin-lnk" href="https://localhost:7208/Admin">Admin</a>
+            </div>
     </footer>
+
+    <script>
+
+        //window.onload = function get_body() {
+        //body = document.getElementsByTagName('body')[0];
+        //}
+
+function themeToggle(x) {
+   var element = document.body;
+   element.classList.toggle("darkmode");
+}
+</script>
+
 </body>
 </html>
 

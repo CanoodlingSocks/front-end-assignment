@@ -6,13 +6,19 @@
     - Ska man köra foreachen inuti eller utanför container-divarna??
 *@
 @{
-    <p>This is the article page</p>
+    <div class="main-img">
+    <p class="article-title">@Model.Title</p>
+    <img class="article-img" src="~/images/@Model.ImageName">
+    </div>
 
     foreach (var block in Model.Blocks)
     {
+        <div class="blocks-container">
+        
+        
         if (block.Type == "image")
         {
-            <div id="image">
+            <div class="image">
                 <p>@block.Order</p>
                 <img src="../images/@block.Value" />
             </div>
@@ -30,35 +36,72 @@
         }
         <hr />
 
-        foreach (var comment in Model.Comments)
-        {
-            <p>
-                @comment.CommentedBy
-            </p>
-            <p>
-                @comment.Created
-            </p>
-            <p>
-                @comment.Value
-            </p>
-        }
+        </div>
     }
     @*
         - Osäker på hur denna funkar, ska den vara en form som tar in data?
         - Har den redan data och jag behöver bara matcha upp kommentarerna mot rätt artikel? <-- Troligen
     *@
 
-    <div class="commentary-form">
-        <form>
-            <p>This is just an example</p>
-            <label for="email">Email</label>
-            <input type="email" placeholder="john.doe@example.com">
-            <label for="comment-box">Comment</label>
-            <input type="text">
-            <input type="submit" text="Submit">
-        </form>
-        <hr>
+
+    <div class="author-container">
+        <div class="author">
+        <p>@Model.Created</p>
+        <div class="author-img">
+            <img src=~/images/@Model.Author.ImageName>
         </div>
+        <div class="about-author">
+        <span class="name">@Model.Author.FirstName @Model.Author.LastName</span>
+        <span class="socials"> 
+        <i class="fa-light fa-envelope"></i>
+        E-post
+        </span>
+        <span class="socials"> 
+        <i class="fa-brands fa-twitter"></i>
+        Twitter
+        </span>
+        </div>
+        </div>
+    </div>
+
+     @*<div class="ad-container">
+                @{
+                    string landscape = new Random().Next(1, 4).ToString();
+                    string portrait = new Random().Next(1, 4).ToString();
+                }
+                <picture id="ad-picture">
+                    <a href="https://www.buyawesomestuff.com/" target="_blank">
+                        <img src="../ads/reklam-@portrait-portrait-320w.png" alt="" />
+                        <source media="(min-width: 1025px)" srcset="~/ads/reklam-@portrait-portrait-320w.png">
+                        <source media="(min-width: 1024px) and (max-width: 1399px)" srcset="~/ads/reklam-@landscape-landscape-940w.png">
+                        <source media="(min-width: 700px) and (max-width: 1023px)" srcset="~/ads/reklam-@landscape-landscape-940w.png">
+                        <source media="(min-width: 501px) and (max-width: 699px)" srcset="~/ads/reklam-@landscape-landscape-470w.png">
+                    </a>
+                </picture>
+            </div>
+            <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>*@
+
+            <div class="comments-container">
+            <h3>@Model.Comments.Count() Kommentarer</h3>
+            <a href="" class="comments-lnk">Skriv en kommentar</a>
+            <div class="forms">
+
+           
+            </div>
+            </div>
+
+
+    //<div class="commentary-form">
+    //    <form>
+    //        <p>This is just an example</p>
+    //        <label for="email">Email</label>
+    //        <input type="email" placeholder="john.doe@example.com">
+    //        <label for="comment-box">Comment</label>
+    //        <input type="text">
+    //        <input type="submit" text="Submit">
+    //    </form>
+    //    <hr>
+    //    </div>
 
     // ----------------- TEST ---------------------------------------------------------
     //@using (Html.BeginForm("Form", "ArticlePage", FormMethod.Post))
@@ -81,3 +124,5 @@
     //    }
     // ----------------- END OF TEST -----------------------------------------------------
 }
+
+

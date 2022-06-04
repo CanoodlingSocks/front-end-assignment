@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mvc.Models;
+using Service.Models;
 using Service.Services;
 using System.Text.RegularExpressions;
 
@@ -45,6 +46,20 @@ namespace mvc.Controllers
             var articlePageView = ArticleService.Instance.GetById(articleId);
             return View(articlePageView);
         }
+
+        //[HttpPost("news/{CreateComment}")]
+        //public IActionResult CreateComment(string returnUrl, ArticleDTO articleDTO)
+        //{
+        //    CreateCommentDTO newComment = new CreateCommentDTO()
+        //    {
+        //        CommentedBy = articleDTO.Comments,
+        //        Value = articleDTO.newComment.Value,
+        //        ArticleId = (Guid)articleDTO.Id
+        //    };
+        //    ArticleService.Instance.AddComment(create);
+
+        //    return Redirect(returnUrl);
+        //}
 
     }
 }

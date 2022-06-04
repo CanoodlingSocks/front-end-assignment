@@ -15,6 +15,8 @@ export default class App extends Component {
                     <nav class="navbar">
                         <Link to="/articles">Articles</Link>
                         <br />
+                        <Link to="/journalists">Journalists</Link>
+                        <br />
                         <Link to="/images">Images</Link>
                     </nav>
                 </div>

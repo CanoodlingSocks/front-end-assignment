@@ -11,16 +11,17 @@
             <div id="date">
                 @article.Created.ToString(@"H:mm") 
             </div>
-            <span id="summary-text">
-                <span id="title">
+                <div class="sum-text">
+                <h4 id="title">
                     @article.Title
-                </span>
-                <span id="intro">
+                </h4>
+                <p id="intro">
                     @article.Intro
-                </span>
-            </span>
+                </p>
+                </div>
+            
             <a id="read-more-btn" asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
-                <button>Läs Mer <i class='fas fa-arrow-right'></i></button>
+                <button>Läs Mer <i class="fa fa-arrow-right" aria-hidden="true"></i></button> 
             </a>
         </div>
         <hr>

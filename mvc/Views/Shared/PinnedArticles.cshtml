@@ -7,21 +7,21 @@
         string articles = regexId.Replace(pinnedArticles.Title, "-").ToString();
         string url = $"{pinnedArticles.Id}-{articles}";
 
-        <span class="pinned-articles">
+        <div class="pinned-articles">
             <a asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
                 <img src="../images/@pinnedArticles.ImageName" />
-                <div id="text-content">
-                <div id="pinned-date">
+                <div class="text-content">
+                <h5>
                     @pinnedArticles.Created
-                </div>
-                <div id="pinned-title">
+                </h5>
+                <h3 id="pinned-title">
                     @pinnedArticles.Title
-                </div>
-                <div id="pinned-author">
+                </h3>
+                <p id="pinned-author">
                     - @pinnedArticles.AuthorFirstName @pinnedArticles.AuthorFirstName
-                </div>
+                </p>
                 </div>
             </a>
-        </span>
+        </div>
     }
 }
