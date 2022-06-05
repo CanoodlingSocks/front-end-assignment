@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - mvc</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/mvc.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" asp-append-version="true"/>
 </head>
 <header>
 
@@ -14,7 +14,7 @@
         <p>Blåatoppens Dagblad</p>
     </div>
     <label class="toggle-btn">
-        <i id="toggle" class="fa fa-toggle-off" type="checkbox" onclick="themeToggle(this)"></i>
+            <i id="toggle" class="fa fa-toggle-off" type="checkbox" onclick="themeToggle(this)"></i>
         <span class="slider">Byt tema</span>
     </label>
 </header>
@@ -62,12 +62,8 @@ function themeToggle(x) {
    var element = document.body;
    element.classList.toggle("darkmode");
 }
+
 </script>
 
 </body>
 </html>
-
-@*
-    Vart många divar på footer delen men det var för att jag hade svårt att individuellt selecta dom titles som ska ha en större font än resten
-    finns säkert nåt bättre sätt att göra detta but i am so fricken tired plz have mercy
-*@

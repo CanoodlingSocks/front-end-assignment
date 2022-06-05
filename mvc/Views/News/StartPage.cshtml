@@ -6,9 +6,18 @@
     <div class="pinned-articles-container">
         @{
             Html.RenderPartial("PinnedArticles");
-        }
+        } 
     </div>
     <br />
+
+    @* Nu kan jag åtminstone få in ads i sidorna men har fortf inte löst hur jag får dom att ändras portrait/landscape *@
+
+    <div class="ads-container">
+            @{
+            Html.RenderPartial("Ads");
+        }
+    </div>
+
     <div class="article-container">
         <div class="article-p-tag">
             <h3>De senaste nyheterna</h3>

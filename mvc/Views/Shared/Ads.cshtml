@@ -1,0 +1,15 @@
+﻿@{
+                  
+        string randomNum = $"{new Random().Next(1, 4)}";
+               
+
+           <a href="https://buyawesomestuff.com/" target="_blank">
+        <picture class="ads">
+            <source media="(min-width: 1400px)" srcset="~/ads/reklam-@randomNum-portrait-320w.png">
+            <source media="(min-width: 1024px) and (max-width: 1399px)" srcset="~/ads/reklam-@randomNum-landscape-940w.png">
+            <source media="(min-width: 700px) and (max-width: 1023px)" srcset="~/ads/reklam-@randomNum-landscape-940w.png">
+            <source media="(min-width: 501px) and (max-width: 699px)" srcset="~/ads/reklam-@randomNum-landscape-470w.png">
+            <img src="~/ads/reklam-@randomNum-landscape-470w.png" alt="" class="Commercial"/>
+        </picture>
+        </a>
+}

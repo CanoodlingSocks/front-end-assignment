@@ -11,38 +11,19 @@
     <img class="article-img" src="~/images/@Model.ImageName">
     </div>
 
-    foreach (var block in Model.Blocks)
-    {
-        <div class="blocks-container">
-        
-        
-        if (block.Type == "image")
-        {
-            <div class="image">
-                <p>@block.Order</p>
-                <img src="../images/@block.Value" />
-            </div>
+     <div class="ads-container-2">
+            @{
+            Html.RenderPartial("Ads");
         }
-        else if (block.Type == "quote")
-        {
-            <div id="quote-block">
-                <p>@block.Order</p>
-                <p>@block.Value</p>
-            </div>
-        }
-        else
-        {
-            <p>@block.Order @block.Value</p>
-        }
-        <hr />
+    </div>
 
-        </div>
-    }
-    @*
-        - Osäker på hur denna funkar, ska den vara en form som tar in data?
-        - Har den redan data och jag behöver bara matcha upp kommentarerna mot rätt artikel? <-- Troligen
-    *@
+    <div class="grid">
 
+       <div class="blocks-container">
+            @{
+            Html.RenderPartial("ArticleBlocks");
+        }
+    </div>
 
     <div class="author-container">
         <div class="author">
@@ -64,31 +45,16 @@
         </div>
     </div>
 
-     @*<div class="ad-container">
-                @{
-                    string landscape = new Random().Next(1, 4).ToString();
-                    string portrait = new Random().Next(1, 4).ToString();
-                }
-                <picture id="ad-picture">
-                    <a href="https://www.buyawesomestuff.com/" target="_blank">
-                        <img src="../ads/reklam-@portrait-portrait-320w.png" alt="" />
-                        <source media="(min-width: 1025px)" srcset="~/ads/reklam-@portrait-portrait-320w.png">
-                        <source media="(min-width: 1024px) and (max-width: 1399px)" srcset="~/ads/reklam-@landscape-landscape-940w.png">
-                        <source media="(min-width: 700px) and (max-width: 1023px)" srcset="~/ads/reklam-@landscape-landscape-940w.png">
-                        <source media="(min-width: 501px) and (max-width: 699px)" srcset="~/ads/reklam-@landscape-landscape-470w.png">
-                    </a>
-                </picture>
-            </div>
-            <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>*@
+    </div>
+    <br />
 
             <div class="comments-container">
             <h3>@Model.Comments.Count() Kommentarer</h3>
             <a href="" class="comments-lnk">Skriv en kommentar</a>
             <div class="forms">
-
-           
             </div>
             </div>
+    <br />
 
 
     //<div class="commentary-form">

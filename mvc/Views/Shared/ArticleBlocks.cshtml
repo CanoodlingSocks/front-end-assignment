@@ -1,0 +1,28 @@
+﻿@model Service.Models.ArticleDTO;
+@{
+    foreach (var block in Model.Blocks)
+    {
+        
+        
+        
+        if (block.Type == "image")
+        {
+            <div class="image">
+                <p>@block.Order</p>
+                <img src="../images/@block.Value" />
+            </div>
+        }
+        else if (block.Type == "quote")
+        {
+            <div id="quote-block">
+                <p>@block.Order</p>
+                <p>@block.Value</p>
+            </div>
+        }
+        else
+        {
+            <p>@block.Order @block.Value</p>
+        }
+
+    }
+}
