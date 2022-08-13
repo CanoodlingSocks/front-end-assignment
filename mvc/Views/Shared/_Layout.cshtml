@@ -48,7 +48,7 @@
             </div>
             </div>
             <div>
-        <a id="admin-lnk" href="https://localhost:7208/Admin">Admin</a>
+        <a id="admin-lnk" href="https://localhost:7208/admin">Admin</a>
             </div>
     </footer>
 
@@ -57,10 +57,24 @@
         //window.onload = function get_body() {
         //body = document.getElementsByTagName('body')[0];
         //}
+    window.onload = function checkMode() {
+        if (themeMode){
+            var element = document.body;
+            element.classList.toggle("darkmode")
+        }
+    }
 
 function themeToggle(x) {
    var element = document.body;
    element.classList.toggle("darkmode");
+   window.localStorage.setItem('darkmode', 'on');
+}
+
+function checkMode() {
+    const themeMode = window.localStorage.getItem('darkmode');
+    //if (themeMode!) {
+    //themeToggle(x) 
+    //}
 }
 
 </script>

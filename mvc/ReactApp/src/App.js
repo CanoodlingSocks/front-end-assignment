@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import './custom.css'
+import './App.css'
 
 export default class App extends Component {
     static displayName = App.name;
@@ -8,18 +8,18 @@ export default class App extends Component {
     render() {
         return (
             <main>
-                <header>
-                    <h1 class="admin-header">Blåatoppens dagblad ADMIN</h1>
-                </header>
-                <div class="article-links">
-                    <nav class="navbar">
-                        <Link to="/articles">Articles</Link>
+                    <nav className="navbar">
+                <div class="article-links-container">
+                    <div className="article-links">
+                        <Link className="btn-links" to="/admin/articles">Articles</Link>
                         <br />
-                        <Link to="/journalists">Journalists</Link>
+                            <Link className="btn-links" to="/admin/authors">Authors</Link>
                         <br />
-                        <Link to="/images">Images</Link>
-                    </nav>
+                            <Link className="btn-links" to="/admin/images">Images</Link>
+                    </div>
                 </div>
+                {/* <div className="container"></div> */}
+                    </nav>
                 <Outlet />
             </main>
         );

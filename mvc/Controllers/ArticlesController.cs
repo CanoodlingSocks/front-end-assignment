@@ -24,7 +24,14 @@ namespace mvc.Controllers
         [HttpGet]
         public IActionResult GetArticles()
         {
-            return Ok(Service.GetAllArticles());
+            try
+            {
+                return Ok(Service.GetAllArticles());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             
         }
 
@@ -36,10 +43,26 @@ namespace mvc.Controllers
         }
 
         // GET /articles/{id}
+        //Får problem i ReactApp att hitta artiklarna, testar error handling
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
-            return Ok(Service.GetById(id));
+            if (id == null)
+            {
+                return Ok(Service.GetAllArticles());
+                //return Ok(Service.GetById(id));
+            }
+            else
+            {
+                try
+                {
+                    return Ok(Service.GetById(id));
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+            }
         }
 
         [HttpPut("{id}")]

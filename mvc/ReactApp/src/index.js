@@ -3,25 +3,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
 
 
 import AdminArticlesComponent from './components/admin-articles-component.js';
+import AdminAuthorsComponent from './components/admin-author-component.js';
+import AdminImagesComponent from './components/admin-images-component.js';
+import CreateArticle from './components/create-articles-component.js';
+import EditArticle from './components/edit-articles-component.js';
 
-const baseUrl = "Admin";
+// const baseUrl = "/admin";
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
  <React.StrictMode>
-  <BrowserRouter basename={baseUrl}>
+  <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}> 
-          <Route path=":admin/articles" element={<AdminArticlesComponent />} >
-            </Route>
+
+        <Route path="/admin" element={<App />}> 
+          <Route path="/admin/articles" element={<AdminArticlesComponent />} />
+           <Route path="/admin/articles/create" element={<CreateArticle />} > </Route>
+          <Route path="/admin/articles/:id" element={<EditArticle />} />
+            
+            <Route path="/admin/authors" element={<AdminAuthorsComponent />} />
+            
+            <Route path="/admin/images" element={<AdminImagesComponent />} />
+
             </Route>
 
           <Route
+
       path="*"
       element={
         <main style={{ padding: "1rem" }}>
@@ -38,12 +48,4 @@ ReactDOM.render(
 
 
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.unregister();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
