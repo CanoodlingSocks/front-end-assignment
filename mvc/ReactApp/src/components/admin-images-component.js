@@ -1,49 +1,59 @@
 import { Link, Outlet } from "react-router-dom";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import  axios  from "axios";
 import { useState } from "react"
 import { Fragment } from "react";
 
 const AdminImagesComponent = () => {
-    const [AdminImages, setAdminImages] = useState([]);
+    const [adminImages, setAdminImages] = useState([]);
 
-    useEffect(()=>{
-      axios.get("http://localhost:7208/api/images")
-      .then((response) => {
-        let AdminImages = response.data;
-        setAdminImages(AdminImages)
-      });
-    }, [])
+  const UploadImage = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+      formData.append('image', adminImages);
+      try {
+        const response = axios({
+          method: 'post',
+          url: 'https://localhost:7208/api/images',
+          data: formData,
+          heaader: {
+            'Content-Type': `multipart/form-data`
+          },
+        })
+      } catch (error) {
+        console.log(error)
+      }
+      //Fixa en let msg grej som säger att uppladdningen funkar
+  }
+
+const fileSelect = (event) => {
+setAdminImages(event.target.files[0])
+}
+
+    // useEffect(()=>{
+    //   axios.post("https://localhost:7208/api/images")
+    //   .then((response) => {
+    //     let adminImages = response.data;
+    //     setAdminImages(AdminImages)
+    //   });
+    // }, [])
         
 
         return(
             <Fragment>
         <div className="container">
             <header className="inner-header">
-                <h2>Images</h2>
+                <h2>Bilder</h2>
                 <div class="create-btn">
-                <Link to="/admin/images/create">Create</Link>
+                <Link to="/admin/images/new">Create</Link>
                 </div>
             </header>
-                    
-                    {AdminImages.map((image) => {
-                       return (
-                      <ul>
-                        <li>
-                        <Link
-                        to={`admin/images/${image.title}`}
-                        key={image.id}
-                        >
-                        {image.title}
-                        </Link>
-                          
-                        </li>
-                      </ul>
-                        
-                       )}
-
-                    )};
-       
+                    <form onSubmit={UploadImage}>
+                      <label>Select Image</label>
+                      <input type="file" onChange={fileSelect}></input>
+                      <input type="submit"></input>
+                    </form>
+                   
           <Outlet />
        </div>
        </Fragment>

@@ -11,11 +11,11 @@ export default class App extends Component {
                     <nav className="navbar">
                 <div class="article-links-container">
                     <div className="article-links">
-                        <Link className="btn-links" to="/admin/articles">Articles</Link>
+                        <Link className="btn-links" to="/admin/articles">Artiklar</Link>
                         <br />
-                            <Link className="btn-links" to="/admin/authors">Authors</Link>
+                            <Link className="btn-links" to="/admin/journalists">Journalister</Link>
                         <br />
-                            <Link className="btn-links" to="/admin/images">Images</Link>
+                            <Link className="btn-links" to="/admin/images">Bilder</Link>
                     </div>
                 </div>
                 {/* <div className="container"></div> */}
@@ -25,3 +25,5 @@ export default class App extends Component {
         );
     }
 }
+
+//Jag hade satt alla namn och grejer på engelska men ändrar nu tillbaka allt till svenska för att följa mallen men klassnamnen kommer fortsätta vara på engelska

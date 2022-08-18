@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaPen,FaTrash } from "react-icons/fa";
+import { FaPen,FaTrashAlt } from "react-icons/fa";
 import  axios  from "axios";
 
 const AdminArticlesComponent = () => {
@@ -22,9 +22,9 @@ const AdminArticlesComponent = () => {
     <Fragment>
         <div className="container">
             <header className="inner-header">
-                <h2>Articles</h2>
+                <h2>Artiklar</h2>
                 <div class="create-btn">
-                <Link class="create-btn-link" to="/admin/articles/create">Create</Link>
+                <Link class="create-btn-link" to="/admin/articles/new">Create</Link>
                 </div>
             </header>
                 <hr></hr>
@@ -39,14 +39,14 @@ const AdminArticlesComponent = () => {
                         </div>
 
                     <td>
-                        <div>
+                        
                         <Link to={`/admin/articles/${AdminArticle.id}`}><FaPen className="icons"></FaPen></Link>
-                        </div>
+                        
                     </td>
                     <td>
-                        <div>
-                        <FaTrash className="icons" />
-                        </div>
+                        
+                        <FaTrashAlt className="icons" />
+                       
                     </td>
                     </tr>
                     </table>

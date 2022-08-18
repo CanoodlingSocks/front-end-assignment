@@ -21,25 +21,35 @@ const AdminAuthorsComponent = () => {
         <Fragment>
             <div className="container">
             <header className="inner-header">
-                <h2>Authors</h2>
+                <h2>Journalister</h2>
                 <div class="create-btn">
-                <Link to="/admin/authors/create">Create</Link>
+                <Link to="/admin/authors/new">Create</Link>
                 </div>
             </header>
+            <hr></hr>
 
                {authors.map((author) => {
                   return (
                    <table>
                      <tr>
-                     <td keys={author.id}>{author.firstName}{author.lastName}</td>
-                     <td> <button><Link to={author.id}><FaPen></FaPen></Link></button></td>
-                     <td><button><FaTrash></FaTrash></button></td>
+                      <div className="table-container">
+
+                      <div className="content">
+                     <td keys={author.id}>{author.firstName} {author.lastName}</td>
+                      </div>
+                      </div>
+
+                     <td> 
+                      <Link to={author.id}><FaPen className="icons"></FaPen></Link></td>
+                     <td>
+                      <FaTrash className="icons"></FaTrash>
+                      </td>
                      </tr>
                      </table> 
          )}
                 
                     
-       )};
+       )}
  
    <Outlet />
         </div>
