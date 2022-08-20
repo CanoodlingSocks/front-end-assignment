@@ -23,7 +23,7 @@ const AdminAuthorsComponent = () => {
             <header className="inner-header">
                 <h2>Journalister</h2>
                 <div class="create-btn">
-                <Link to="/admin/authors/new">Create</Link>
+                <Link to="/admin/journalists/new">Create</Link>
                 </div>
             </header>
             <hr></hr>
@@ -40,9 +40,11 @@ const AdminAuthorsComponent = () => {
                       </div>
 
                      <td> 
-                      <Link to={author.id}><FaPen className="icons"></FaPen></Link></td>
+                      <Link to={author.id}><FaPen className="icons"></FaPen></Link>
+                      </td>
                      <td>
-                      <FaTrash className="icons"></FaTrash>
+                     <Link to={`delete/${author.id}`}>
+                      <FaTrash className="icons" ></FaTrash></Link>
                       </td>
                      </tr>
                      </table> 

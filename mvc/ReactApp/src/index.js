@@ -12,6 +12,7 @@ import EditArticle from './components/edit-articles-component.js';
 import AdminAuthorsComponent from './components/admin-author-component.js';
 import CreateAuthor from './components/create-author-component.js';
 import EditAuthor from './components/edit-author-component.js';
+import DeleteAuthor from './components/delete-author-component.js';
 
 import AdminImagesComponent from './components/admin-images-component.js';
 
@@ -31,6 +32,7 @@ ReactDOM.render(
             <Route path="/admin/journalists" element={<AdminAuthorsComponent />} />
             <Route path="/admin/journalists/:id" element={<EditAuthor />} />
             <Route path="/admin/journalists/new" element={<CreateAuthor />} />
+            <Route path="/admin/journalists/delete/:id" element={<DeleteAuthor />} />
 
             <Route path="/admin/images" element={<AdminImagesComponent />} />
 

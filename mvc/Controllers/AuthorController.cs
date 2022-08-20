@@ -54,8 +54,15 @@ namespace mvc.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateAuthor(UpdateAuthorDTO authorDTO)
         {
+            try
+            {
             Service.UpdateAuthor(authorDTO);
             return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }
