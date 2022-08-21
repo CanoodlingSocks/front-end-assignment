@@ -9,7 +9,11 @@ const EditAuthor = () => {
   let uParams = useParams();
   let id = uParams.id;
 
-  const [authorId, setAuthorId] = useState("");
+  // DEN HÄR KOMPONENTEN VAR BARA PAIN PAIN PAIN
+  // HUR SKULLE JAG VETA ATT JAG BEHÖVDE SÄTTA {} I MIN
+  // USESTATE OCH INTE [], I HAVE SPENT DAYS DAAAAYS ON THIS SHIITTTT
+
+  const [authorId, setAuthorId] = useState([]);
 
   const [authorFname, setAuthorFname] = useState("");
   const [authorLname, setAuthorLname] = useState("");
@@ -69,11 +73,13 @@ const saveData = (e) => {
           lastName:  `${e.target[1].value}`,
           imageName: `${e.target[4].value}`,
           mail: `${e.target[2].value}`,
-          twitter: `${e.target[3].value}`
+          twitterUserName: `${e.target[3].value}`
     };
 
       axios.put("https://localhost:7208/api/authors/" + id, editData)
       .then((response) => console.log(response)) 
+      const relocate = 
+    window.location.href = 'admin/journalists';
       
 }
 
@@ -140,8 +146,8 @@ const saveData = (e) => {
             <label htmlFor="author-twitter">Twitter</label>
             <input 
             type="text" 
-            // defaultValue={authorId.twitterUserName !== undefined ? authorId.twitterUserName : ""} 
-            defaultValue={twitter}
+            defaultValue={authorId.twitterUserName !== undefined ? authorId.twitterUserName : twitter} 
+            
             // onChange={(e) => setTwitter(e.target.value)}
             />
             </div>

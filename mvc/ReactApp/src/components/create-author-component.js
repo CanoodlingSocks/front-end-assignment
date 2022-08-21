@@ -9,6 +9,8 @@ const CreateAuthor = () => {
   // let uParams = useParams();
   // let id = uParams.id;
 
+  const [authorId, setAuthorId] = useState([]);
+
   const [authorFname, setAuthorFname] = useState("");
   const [authorLname, setAuthorLname] = useState("");
 
@@ -36,14 +38,18 @@ const CreateAuthor = () => {
         firstName: authorFname,
         lastName: authorLname,
         imageName: imageName,
-        mail: setMail,
-        twitterUserName: setTwitter,
+        mail: `${event.target[2].value}`,
+        twitterUserName: `${event.target[3].value}`
       });
     } catch {
       console.log("Something went wrong");
     }
     console.log("Ok");
+    const relocate = 
+    window.location.href = 'admin/journalists';
+
   };
+
 
   return (
     <Fragment>
@@ -71,12 +77,14 @@ const CreateAuthor = () => {
             <label htmlFor="author-mail">Epost</label>
             <input 
             type="email" 
-            onChange={(e) => setMail(e.target.value)}
+            defaultValue={mail}
             />
             <label htmlFor="author-twitter">Twitter</label>
             <input 
             type="text" 
-            onChange={(e) => setTwitter(e.target.value)} />
+            defaultValue={authorId.twitterUserName !== undefined ? authorId.twitterUserName : ""} 
+            // value={twitter} 
+            />
             </div>
             <label htmlFor="author-image">Bild</label>
             <select

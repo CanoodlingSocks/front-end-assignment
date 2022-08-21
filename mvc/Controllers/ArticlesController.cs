@@ -79,14 +79,7 @@ namespace mvc.Controllers
             return Ok();
         }
 
-        // Testar bara för att se om jag kan skapa en form för kommentarer under artiklar
         
-        //[HttpPost]
-        //public ActionResult Form(CommentDTO com)
-        //{
-        //    ViewBag.Commentor = com.CommentedBy;
-        //    return View("Index");
-        //}
 
     }
 }

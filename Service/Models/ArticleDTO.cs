@@ -25,5 +25,7 @@ namespace Service.Models
         public string ImageName { get; set; }
 
         public bool Pinned { get; set; }
+
+        public CreateCommentDTO NewComments { get; set; }
     }
 }

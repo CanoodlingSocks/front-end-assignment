@@ -23,7 +23,7 @@ const AdminAuthorsComponent = () => {
             <header className="inner-header">
                 <h2>Journalister</h2>
                 <div class="create-btn">
-                <Link to="/admin/journalists/new">Create</Link>
+                <Link to="/admin/journalists/new">Skapa</Link>
                 </div>
             </header>
             <hr></hr>

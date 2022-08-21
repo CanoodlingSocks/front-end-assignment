@@ -24,7 +24,7 @@ const AdminArticlesComponent = () => {
             <header className="inner-header">
                 <h2>Artiklar</h2>
                 <div class="create-btn">
-                <Link class="create-btn-link" to="/admin/articles/new">Create</Link>
+                <Link class="create-btn-link" to="/admin/articles/new">Skapa</Link>
                 </div>
             </header>
                 <hr></hr>

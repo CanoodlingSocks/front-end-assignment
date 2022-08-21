@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL;
+using Microsoft.AspNetCore.Mvc;
 using Service.Models;
 using Service.Services;
 
@@ -32,8 +33,32 @@ namespace mvc.Controllers
 
         public IActionResult DeleteAuthor(Guid id)
         {
-            Service.DeleteAuthor(id);
-            return Ok();
+            //try
+            //{
+            //    using (var context = new ExamContext())
+            //    {
+            //        var author = context.Authors.FirstOrDefault(x => x.Id == id);
+            //        if (author == null)
+            //            throw new NullReferenceException($"No Author found with Id: {id}");
+
+            //        context.Remove(author);
+            //        context.SaveChanges();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    BadRequest(ex.Message);
+            //}
+
+            try
+            {
+                Service.DeleteAuthor(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
@@ -56,8 +81,8 @@ namespace mvc.Controllers
         {
             try
             {
-            Service.UpdateAuthor(authorDTO);
-            return Ok();
+                Service.UpdateAuthor(authorDTO);
+                return Ok();
             }
             catch (Exception ex)
             {

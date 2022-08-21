@@ -5,65 +5,55 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const DeleteAuthor = () => {
-    let uParams = useParams();
-    let authorId = uParams.authorId;
+    let params = useParams();
+    let id = params.id;
+   
 
-    const [status, setStatus] = useState("");
+        // Vet inte varför en enkel axios.delete strular så mycket för
+        // mig, jag svär att axios är ute efter mig
 
-    const [errorMsg, setErrorMsg] = useState("")
+        
 
-    // const [msg, setMsg] = useState("Är du säker på att du vill radera författaren?");
+    const [status, setStatus] = useState("Författaren är raderad");
 
-    // let [isConfirmed, setIsConfirmed] = useState(false);
+    // const [errorMsg, setErrorMsg] = useState("")
 
-    // function RedirectionTimer() {
-    //     const [redirectNow, setRedirectNow] = useState(false);
-    //     setTimeout(() => setRedirectNow(true), 5000);
-    //     window.location.href="https://localhost:7208/admin/journalists";
+
+
+    // const client = axios.create({
+    //     baseURL: "https://localhost:7208/api/authors/"
+    //   });
+
+    // const [posts, setPosts] = useState({});
+
+    // const deletePost = (authorId) => {
+    //         client.delete(`${authorId}`);
+    //         setPosts(
+    //             posts.filter((post) => {
+    //                 return post.authorId !== authorId;
+    //             })
+    //         )
     // }
 
-    const client = axios.create({
-        baseURL: "https://localhost:7208/api/authors/"
+      useEffect(() => {
+        axios.delete("https://localhost:7208/api/authors/" + id)
       });
 
-    const [posts, setPosts] = useState([]);
-
-    const deletePost = (authorId) => {
-            client.delete(`${authorId}`);
-            setPosts(
-                posts.filter((post) => {
-                    return post.authorId !== authorId;
-                })
-            )
-    }
-
-        // useEffect(() => {
-        //         axios.delete('https://localhost:7208/api/authors/' + authorId)
-        //         .then(() => setStatus('Författare raderad'))
-        //         .catch(error => {
-        //             setErrorMsg(error.message);
-        //             console.error('There was an error!', error);
-        //         });
-        // }, []);
-
-    // function Route() {
-    //     window.location.href="https://localhost:7208/admin/journalists";
-    // }
 
     return (
         <div className="container">
-        {/* {msg} */}
-        {/* <div className="confirmation-btns">
-        <input type="button" className="yes-btn disable" value="Ja" onClick={() => setIsConfirmed(true)} />
-        <input type="button" className="no-btn " onClick={Route} value="Nej"/> */}
-        {/* </div> */}
-
-        {status}
+          <header className="inner-header">
+                <h2>Journalister</h2>
+                </header>
+                <hr />
+        <h3>
+          {status}
+        </h3>
+        
         <Link to="/admin/journalists">Gå tillbaka</Link>
         </div>
 
     )
-
-}
+    }
 
 export default DeleteAuthor;

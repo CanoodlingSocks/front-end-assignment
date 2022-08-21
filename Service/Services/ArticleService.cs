@@ -247,6 +247,10 @@ namespace Service.Services
                     throw new NullReferenceException($"No Article found with Id: {comment.ArticleId}");
 
                 var oldComments = article.Comments.ToList();
+                if(oldComments == null)
+                {
+                    throw new NullReferenceException($"Comment was empty");
+                }
                 oldComments.Add(new Comment
                 {
                     Value = comment.Value,
