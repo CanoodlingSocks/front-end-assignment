@@ -621,4 +621,3 @@ footer {
  
  }
 
-/* For now så får ads ha display none på dom större skärmar då jag fortfarande inte fixat portrait mode på reklambilderna. Jag kommer även framöver baka in reklamen i samma container som article-summaries för att få den propert responsive och då kommer ads containern att kunna flexa upp/ner beroende på storlek */

@@ -33,22 +33,6 @@ namespace mvc.Controllers
 
         public IActionResult DeleteAuthor(Guid id)
         {
-            //try
-            //{
-            //    using (var context = new ExamContext())
-            //    {
-            //        var author = context.Authors.FirstOrDefault(x => x.Id == id);
-            //        if (author == null)
-            //            throw new NullReferenceException($"No Author found with Id: {id}");
-
-            //        context.Remove(author);
-            //        context.SaveChanges();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    BadRequest(ex.Message);
-            //}
 
             try
             {

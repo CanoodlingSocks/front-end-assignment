@@ -1,5 +1,5 @@
 ﻿@using System.Text.RegularExpressions
-@using mvc.Models;
+
 @{
     foreach (var pinnedArticles in Model.PinnedArticles)
     {
@@ -11,15 +11,15 @@
             <a asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
                 <img src="../images/@pinnedArticles.ImageName" />
                 <div class="text-content">
-                <h5>
-                    @pinnedArticles.Created
-                </h5>
-                <h3 id="pinned-title">
-                    @pinnedArticles.Title
-                </h3>
-                <p id="pinned-author">
-                    - @pinnedArticles.AuthorFirstName @pinnedArticles.AuthorFirstName
-                </p>
+                    <h5>
+                        @pinnedArticles.Created
+                    </h5>
+                    <h3 id="pinned-title">
+                        @pinnedArticles.Title
+                    </h3>
+                    <p id="pinned-author">
+                        - @pinnedArticles.AuthorFirstName @pinnedArticles.AuthorFirstName
+                    </p>
                 </div>
             </a>
         </div>

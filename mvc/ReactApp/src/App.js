@@ -8,22 +8,20 @@ export default class App extends Component {
     render() {
         return (
             <main>
-                    <nav className="navbar">
-                <div class="article-links-container">
-                    <div className="article-links">
-                        <Link className="btn-links" to="/admin/articles">Artiklar</Link>
-                        <br />
+                <nav className="navbar">
+                    <div class="article-links-container">
+                        <div className="article-links">
+                            <Link className="btn-links" to="/admin/articles">Artiklar</Link>
+                            <br />
                             <Link className="btn-links" to="/admin/journalists">Journalister</Link>
-                        <br />
+                            <br />
                             <Link className="btn-links" to="/admin/images">Bilder</Link>
+                        </div>
                     </div>
-                </div>
-                {/* <div className="container"></div> */}
-                    </nav>
+                </nav>
                 <Outlet />
             </main>
         );
     }
 }
 
-//Jag hade satt alla namn och grejer på engelska men ändrar nu tillbaka allt till svenska för att följa mallen men klassnamnen kommer fortsätta vara på engelska

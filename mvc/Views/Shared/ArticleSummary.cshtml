@@ -1,5 +1,5 @@
 ﻿@using System.Text.RegularExpressions
-@using mvc.Models;
+
 @{
     foreach (var article in Model.ArticleSummary)
     {
@@ -9,26 +9,21 @@
 
         <div class="article-summary-box">
             <div id="date">
-                @article.Created.ToString(@"H:mm") 
+                @article.Created.ToString(@"H:mm")
             </div>
-                <div class="sum-text">
+            <div class="sum-text">
                 <h4 id="title">
                     @article.Title
                 </h4>
                 <p id="intro">
                     @article.Intro
                 </p>
-                </div>
-            
+            </div>
+
             <a id="read-more-btn" asp-controller="News" asp-action="ArticlePage" asp-route-urlId="@url">
-                <button>Läs Mer <i class="fa fa-arrow-right" aria-hidden="true"></i></button> 
+                <button>Läs Mer <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </a>
         </div>
         <hr>
+    }
 }
-}
- 
-@*
-DATETIME D/M
-@article.Created.ToString(@"d\/M")
-*@

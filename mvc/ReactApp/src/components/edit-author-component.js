@@ -9,39 +9,18 @@ const EditAuthor = () => {
   let uParams = useParams();
   let id = uParams.id;
 
-  // DEN HÄR KOMPONENTEN VAR BARA PAIN PAIN PAIN
-  // HUR SKULLE JAG VETA ATT JAG BEHÖVDE SÄTTA {} I MIN
-  // USESTATE OCH INTE [], I HAVE SPENT DAYS DAAAAYS ON THIS SHIITTTT
-
   const [authorId, setAuthorId] = useState([]);
 
   const [authorFname, setAuthorFname] = useState("");
   const [authorLname, setAuthorLname] = useState("");
 
-  const [images, setImages] = useState([]); //Change name later to authorImage, setAuthorImage
+  const [images, setImages] = useState([]); 
 
   const [imageName, setImageName] = useState("");
 
   const [mail, setMail] = useState("");
   const [twitter, setTwitter] = useState("");
 
-//   const handleChange = (event) => {
-//       setAuthorName({...authorName, [event.target.name]: event.target.value})
-//   }
-
-//   const handleSubmit = (e) => {
-//       e.preventDefault()
-//       axios.put(`https://localhost:7208/api/authors/{id}`, `authorName`)
-//       .then(function (response) {
-//           console.log(response)
-//       })
-//       .catch(function (error) {
-//           console.log(error)
-//       })
-//   }
-  //Axios error 405
-
-  // Mikaela hjälpte mig med axiosen, axios vill helt enkelt inte fungera för mig T_T
   useEffect(() => {
     axios.get("https://localhost:7208/api/authors/" + id).then((response) => {
       setAuthorId(response.data.id);
@@ -79,38 +58,8 @@ const saveData = (e) => {
       axios.put("https://localhost:7208/api/authors/" + id, editData)
       .then((response) => console.log(response)) 
       const relocate = 
-    window.location.href = 'admin/journalists';
-      
+    window.location.href = 'admin/journalists';  
 }
-
-
-//     try {
-//       axios.put("https://localhost:7208/api/authors/" + id, {
-//         id: authorId,
-//         firstName: authorFname,
-//         lastName: authorLname,
-//         imageName: imageName,
-//         mail: setMail,
-//         twitterUserName: setTwitter,
-//       });
-//     } catch {
-//       console.log("Something went wrong");
-//     }
-//     console.log("Ok");
-//   };
-
-  //LACHLANS KOD
-  // export function UpdateAuthor(authorInfo) {
-  //     return axios.put('https://localhost:7208/api/authors/' + authorInfo.id, authorInfo)
-  //     .then((response) => {
-  //         const data = response.data;
-  //         return data;
-  //     })
-  //     .catch((error) => {
-  //         console.log("Error in UpdateAuthor: ", error);
-  //     })
-  // }
-  // END OF LACHLANS KOD
 
   return (
     <Fragment>
@@ -125,7 +74,6 @@ const saveData = (e) => {
                 name="first-name"
                 required="required"
                 defaultValue={authorFname}
-                // onChange={(e) => setAuthorFname(e.target[0].value)}
               />
               <label htmlFor="Last-name">Last name</label>
               <input
@@ -133,7 +81,6 @@ const saveData = (e) => {
                 name="last-name"
                 required="required"
                 defaultValue={authorLname}
-                // onChange={(e) => setAuthorLname(e.target.value)}
               />
             </div>
             <div className="socials-input">
@@ -141,33 +88,27 @@ const saveData = (e) => {
             <input 
             type="email" 
             defaultValue={mail}
-            // onChange={(e) => setMail(e.target.value)}
             />
             <label htmlFor="author-twitter">Twitter</label>
             <input 
             type="text" 
             defaultValue={authorId.twitterUserName !== undefined ? authorId.twitterUserName : twitter} 
-            
-            // onChange={(e) => setTwitter(e.target.value)}
             />
             </div>
-            
             <label htmlFor="author-image">Image</label>
             <select
               classname="input"
               required="required"
               value={imageName}
-            //   onChange={(e) => setImageName(e.target.value)}
             >
               {images.map((image) => {
-                // <option hidden disabled defaultValue />
                   return <option selected={image === images.imageName ? true : false } classname="input" key={image} value={image}>{image}</option>
               }
               )}
             </select>
             <div>
             <input type="submit" value="Uppdatera" />
-            <Link to="/admin/journalists">Avbryt</Link>
+            <Link to="/admin/journalists" className="back-btn">Avbryt</Link>
             </div>
           </form>
         </div>

@@ -1,10 +1,5 @@
 ﻿@model Service.Models.ArticleDTO;
 
-@*Ska jag använda ArticleDTO eller ska jag redan nu implementera blocks?
-    - Blocks har olika typer och en siffra som indikerar vilken ordning dom kommer i
-    - Simon gav tips att använda if-satser för att checka types direkt på sidan i en container
-    - Ska man köra foreachen inuti eller utanför container-divarna??
-*@
 @{
     <div class="main-img">
     <p class="article-title">@Model.Title</p>
@@ -47,7 +42,6 @@
 
     </div>
     <br />
-
             <div class="comments-container">
             <h3>@Model.Comments.Count() Kommentarer</h3>
             <a href="" class="comments-lnk">Skriv en kommentar</a>
@@ -66,7 +60,6 @@
                 <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
                 <br />
                 <input type="submit" value="Lägg till kommentar" />
-
             }
             </div>
             @foreach (var comment in Model.Comments)
@@ -79,10 +72,7 @@
                 </div>
             }
             </div>
-    <br />
-
-    //Thank god för whoever delade deras regex lmao
-   
+    <br />  
 }
 
 

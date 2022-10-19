@@ -2,12 +2,9 @@ import axios from "axios";
 import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-// import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const CreateAuthor = () => {
-  // let uParams = useParams();
-  // let id = uParams.id;
 
   const [authorId, setAuthorId] = useState([]);
 
@@ -45,9 +42,8 @@ const CreateAuthor = () => {
       console.log("Something went wrong");
     }
     console.log("Ok");
-    const relocate = 
-    window.location.href = 'admin/journalists';
-
+    const relocate =   // Osäker om denna funkar
+      window.location.href = 'admin/journalists';
   };
 
 
@@ -74,17 +70,16 @@ const CreateAuthor = () => {
               />
             </div>
             <div className="socials-input">
-            <label htmlFor="author-mail">Epost</label>
-            <input 
-            type="email" 
-            defaultValue={mail}
-            />
-            <label htmlFor="author-twitter">Twitter</label>
-            <input 
-            type="text" 
-            defaultValue={authorId.twitterUserName !== undefined ? authorId.twitterUserName : ""} 
-            // value={twitter} 
-            />
+              <label htmlFor="author-mail">Epost</label>
+              <input
+                type="email"
+                defaultValue={mail}
+              />
+              <label htmlFor="author-twitter">Twitter</label>
+              <input
+                type="text"
+                defaultValue={authorId.twitterUserName !== undefined ? authorId.twitterUserName : ""}
+              />
             </div>
             <label htmlFor="author-image">Bild</label>
             <select
@@ -101,7 +96,7 @@ const CreateAuthor = () => {
               ))}
             </select>
             <input type="submit" value="Skapa" />
-            <Link to="/admin/journalists">Avbryt</Link>
+            <Link to="/admin/journalists" className="back-btn">Avbryt</Link>
           </form>
         </div>
         <Outlet />

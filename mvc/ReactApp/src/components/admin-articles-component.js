@@ -7,16 +7,13 @@ import  axios  from "axios";
 const AdminArticlesComponent = () => {
     const [AdminArticles, setArticles] = useState([]);
 
-    //Axios can eat my butt
-    //https://localhost:7208/api/articles <-- BRUH det gick inte att bara skriva localhost:7208, man måste ha med https: delen oxå 
-
     useEffect(() =>{
         axios.get("https://localhost:7208/api/articles").then((response) => { 
             // console.log(response.data)    
         let AdminArticles = response.data;
             setArticles(AdminArticles)
         });
-    }, []) // <-- Fortfarande är jag osäker på varför dom tomma brackets behövs?
+    }, [])
     
     return(
     <Fragment>
@@ -39,13 +36,16 @@ const AdminArticlesComponent = () => {
                         </div>
 
                     <td>
-                        
+
+                        <div className="move">
                         <Link to={`/admin/articles/${AdminArticle.id}`}><FaPen className="icons"></FaPen></Link>
+                        </div>
                         
                     </td>
                     <td>
-                        
+                        <div className="move-2">
                         <FaTrashAlt className="icons" />
+                        </div>
                        
                     </td>
                     </tr>

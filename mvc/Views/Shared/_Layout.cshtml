@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - mvc</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/mvc.styles.css" asp-append-version="true" />
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        asp-append-version="true" />
 </head>
 <header>
 
@@ -14,15 +16,14 @@
         <p>Blåatoppens Dagblad</p>
     </div>
     <label class="toggle-btn">
-            <i id="toggle" class="fa fa-toggle-off" type="checkbox" onclick="themeToggle(this)"></i>
+        <i id="toggle" class="fa fa-toggle-off" type="checkbox" onclick="themeToggle(this)"></i>
         <span class="slider">Byt tema</span>
     </label>
 </header>
+
 <body>
     <div class="container">
-        
-            @RenderBody()
-       
+        @RenderBody()
     </div>
 
     <footer>
@@ -41,43 +42,40 @@
             </div>
             <div id="about-us">
                 <p>
-                    Dagstidningen Blåatoppens dagblad grundades 1821. Tidningen har under 100 år varit den mest lästa tidningen i hela Blåatoppen.
-                    Ambitionen med tidningen har sedan dess grundades varit att tillhandahålla medborgarna med nyhetsrapportering av den allra högsta kvalitén.
-                    Blåatoppens dagblad finns idag tillgänglig som papperstidning, e-tidning, sajt, ljud-tidning och VR-upplevelse.
+                    Dagstidningen Blåatoppens dagblad grundades 1821. Tidningen har under 100 år varit den mest lästa
+                    tidningen i hela Blåatoppen.
+                    Ambitionen med tidningen har sedan dess grundades varit att tillhandahålla medborgarna med
+                    nyhetsrapportering av den allra högsta kvalitén.
+                    Blåatoppens dagblad finns idag tillgänglig som papperstidning, e-tidning, sajt, ljud-tidning och
+                    VR-upplevelse.
                 </p>
             </div>
-            </div>
-            <div>
-        <a id="admin-lnk" href="https://localhost:7208/admin">Admin</a>
-            </div>
+        </div>
+        <div>
+            <a id="admin-lnk" href="https://localhost:7208/admin">Admin</a>
+        </div>
     </footer>
 
     <script>
 
-        //window.onload = function get_body() {
-        //body = document.getElementsByTagName('body')[0];
-        //}
-    window.onload = function checkMode() {
-        if (themeMode){
-            var element = document.body;
-            element.classList.toggle("darkmode")
+        window.onload = function checkMode() {
+            if (themeMode) {
+                var element = document.body;
+                element.classList.toggle("darkmode")
+            }
         }
-    }
 
-function themeToggle(x) {
-   var element = document.body;
-   element.classList.toggle("darkmode");
-   window.localStorage.setItem('darkmode', 'on');
-}
+        function themeToggle(x) {
+            var element = document.body;
+            element.classList.toggle("darkmode");
+            window.localStorage.setItem('darkmode', 'on');
+        }
 
-function checkMode() {
-    const themeMode = window.localStorage.getItem('darkmode');
-    //if (themeMode!) {
-    //themeToggle(x) 
-    //}
-}
+        function checkMode() {
+            const themeMode = window.localStorage.getItem('darkmode');
+        }
 
-</script>
-
+    </script>
 </body>
+
 </html>

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace mvc.Controllers.API
 {
-    [Route("api/images")] // Eller ska man köra [Route("api/[controller]")] ??
+    [Route("api/images")]
     [ApiController]
     public class ImagesController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace mvc.Controllers.API
         [HttpGet]
         public IActionResult GetImage()
         {
-            return Ok(imageService.GetAll()); //Bruh så man måste wrappa in metoden i return ok grejen och man kan inte ba skriva ut metoden??? BRUH
+            return Ok(imageService.GetAll()); 
         }
 
         [HttpPost]

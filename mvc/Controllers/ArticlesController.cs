@@ -39,18 +39,16 @@ namespace mvc.Controllers
         public IActionResult PostArticles(CreateArticleDTO articleDto)
         {
             Service.CreateArticle(articleDto);
-            return Ok(); // Vad gör return View(articleDto) för nåt btw?
+            return Ok();
         }
 
         // GET /articles/{id}
-        //Får problem i ReactApp att hitta artiklarna, testar error handling
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
             if (id == null)
             {
                 return Ok(Service.GetAllArticles());
-                //return Ok(Service.GetById(id));
             }
             else
             {
