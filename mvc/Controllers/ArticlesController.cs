@@ -24,7 +24,14 @@ namespace mvc.Controllers
         [HttpGet]
         public IActionResult GetArticles()
         {
-            return Ok(Service.GetAllArticles());
+            try
+            {
+                return Ok(Service.GetAllArticles());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             
         }
 
@@ -32,14 +39,28 @@ namespace mvc.Controllers
         public IActionResult PostArticles(CreateArticleDTO articleDto)
         {
             Service.CreateArticle(articleDto);
-            return Ok(); // Vad gör return View(articleDto) för nåt btw?
+            return Ok();
         }
 
         // GET /articles/{id}
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
-            return Ok(Service.GetById(id));
+            if (id == null)
+            {
+                return Ok(Service.GetAllArticles());
+            }
+            else
+            {
+                try
+                {
+                    return Ok(Service.GetById(id));
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+            }
         }
 
         [HttpPut("{id}")]
@@ -56,14 +77,7 @@ namespace mvc.Controllers
             return Ok();
         }
 
-        // Testar bara för att se om jag kan skapa en form för kommentarer under artiklar
         
-        //[HttpPost]
-        //public ActionResult Form(CommentDTO com)
-        //{
-        //    ViewBag.Commentor = com.CommentedBy;
-        //    return View("Index");
-        //}
 
     }
 }

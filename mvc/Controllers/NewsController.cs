@@ -47,19 +47,21 @@ namespace mvc.Controllers
             return View(articlePageView);
         }
 
-        //[HttpPost("news/{CreateComment}")]
-        //public IActionResult CreateComment(string returnUrl, ArticleDTO articleDTO)
-        //{
-        //    CreateCommentDTO newComment = new CreateCommentDTO()
-        //    {
-        //        CommentedBy = articleDTO.Comments,
-        //        Value = articleDTO.newComment.Value,
-        //        ArticleId = (Guid)articleDTO.Id
-        //    };
-        //    ArticleService.Instance.AddComment(create);
+        [HttpPost("news/{CreateComment}")]
+        public IActionResult CreateComment(string returnUrl, ArticleDTO articleDTO)
+        {
+            CreateCommentDTO createComment = new CreateCommentDTO()
+            {
+                CommentedBy = articleDTO.NewComments.CommentedBy,
+                Value = articleDTO.NewComments.Value,
+                ArticleId = (Guid)articleDTO.Id
+            };
+            ArticleService.Instance.AddComment(createComment);
 
-        //    return Redirect(returnUrl);
-        //}
+            return Redirect(returnUrl);
+        }
+
+        //Hinner inte fixa kommentarer men dom sparas iaf varjegång man startar om så???
 
     }
 }

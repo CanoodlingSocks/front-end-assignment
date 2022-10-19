@@ -2,9 +2,7 @@
 @{
     foreach (var block in Model.Blocks)
     {
-        
-        
-        
+
         if (block.Type == "image")
         {
             <div class="image">
@@ -23,6 +21,5 @@
         {
             <p>@block.Order @block.Value</p>
         }
-
     }
 }

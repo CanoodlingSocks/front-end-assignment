@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL;
+using Microsoft.AspNetCore.Mvc;
 using Service.Models;
 using Service.Services;
 
@@ -32,8 +33,16 @@ namespace mvc.Controllers
 
         public IActionResult DeleteAuthor(Guid id)
         {
-            Service.DeleteAuthor(id);
-            return Ok();
+
+            try
+            {
+                Service.DeleteAuthor(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
@@ -54,8 +63,15 @@ namespace mvc.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateAuthor(UpdateAuthorDTO authorDTO)
         {
-            Service.UpdateAuthor(authorDTO);
-            return Ok();
+            try
+            {
+                Service.UpdateAuthor(authorDTO);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }

@@ -3,47 +3,52 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
-
-
 import AdminArticlesComponent from './components/admin-articles-component.js';
+import CreateArticle from './components/create-articles-component.js';
+import EditArticle from './components/edit-articles-component.js';
+import AdminAuthorsComponent from './components/admin-author-component.js';
+import CreateAuthor from './components/create-author-component.js';
+import EditAuthor from './components/edit-author-component.js';
+import DeleteAuthor from './components/delete-author-component.js';
+import AdminImagesComponent from './components/admin-images-component.js';
 
-const baseUrl = "Admin";
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
- <React.StrictMode>
-  <BrowserRouter basename={baseUrl}>
+  <React.StrictMode>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}> 
-          <Route path=":admin/articles" element={<AdminArticlesComponent />} >
-            </Route>
-            </Route>
 
-          <Route
-      path="*"
-      element={
-        <main style={{ padding: "1rem" }}>
-          <p>There's nothing here!</p>
-        </main>
+        <Route path="/admin" element={<App />}>
+          <Route path="/admin/articles" element={<AdminArticlesComponent />} />
+          <Route path="/admin/articles/new" element={<CreateArticle />} > </Route>
+          <Route path="/admin/articles/:id" element={<EditArticle />} />
+
+          <Route path="/admin/journalists" element={<AdminAuthorsComponent />} />
+          <Route path="/admin/journalists/:id" element={<EditAuthor />} />
+          <Route path="/admin/journalists/new" element={<CreateAuthor />} />
+          <Route path="/admin/journalists/delete/:id" element={<DeleteAuthor />} />
+
+          <Route path="/admin/images" element={<AdminImagesComponent />} />
+
+        </Route>
+
+        <Route
+
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
           }
-         />
+        />
       </Routes>
-  
-  </BrowserRouter>
-</React.StrictMode>,
-   rootElement);
+
+    </BrowserRouter>
+  </React.StrictMode>,
+  rootElement);
 
 
 
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.unregister();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

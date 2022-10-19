@@ -1,10 +1,5 @@
 ﻿@model Service.Models.ArticleDTO;
 
-@*Ska jag använda ArticleDTO eller ska jag redan nu implementera blocks?
-    - Blocks har olika typer och en siffra som indikerar vilken ordning dom kommer i
-    - Simon gav tips att använda if-satser för att checka types direkt på sidan i en container
-    - Ska man köra foreachen inuti eller utanför container-divarna??
-*@
 @{
     <div class="main-img">
     <p class="article-title">@Model.Title</p>
@@ -47,48 +42,37 @@
 
     </div>
     <br />
-
             <div class="comments-container">
             <h3>@Model.Comments.Count() Kommentarer</h3>
             <a href="" class="comments-lnk">Skriv en kommentar</a>
             <div class="forms">
+            @using (Html.BeginForm("CreateComments", "News", FormMethod.Post))
+            {
+                @Html.LabelFor(m => m.NewComments.CommentedBy, "Din mejladress: ")
+                <br />
+                @Html.TextBoxFor(x=> x.NewComments.CommentedBy, new {required="required", pattern=@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z"})
+                <br />
+                @Html.LabelFor(k => k.NewComments.Value, "Din kommentar: ")
+                <br />
+                @Html.EditorFor(r => r.NewComments.Value, null, new {required="required"})
+                @Html.HiddenFor(x => Model.Id)
+                
+                <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+                <br />
+                <input type="submit" value="Lägg till kommentar" />
+            }
             </div>
+            @foreach (var comment in Model.Comments)
+            {
+                <div class="comments-div">
+                <hr />
+                    <p>@comment.CommentedBy</p>
+                    <p>@comment.Created</p>
+                    <p>@comment.Value</p>
+                </div>
+            }
             </div>
-    <br />
-
-
-    //<div class="commentary-form">
-    //    <form>
-    //        <p>This is just an example</p>
-    //        <label for="email">Email</label>
-    //        <input type="email" placeholder="john.doe@example.com">
-    //        <label for="comment-box">Comment</label>
-    //        <input type="text">
-    //        <input type="submit" text="Submit">
-    //    </form>
-    //    <hr>
-    //    </div>
-
-    // ----------------- TEST ---------------------------------------------------------
-    //@using (Html.BeginForm("Form", "ArticlePage", FormMethod.Post))
-    //{
-    //    foreach (var comment in Model.Comments)
-    //    {
-    //        <h1>
-    //            <b>Name:</b>  @ViewBag.Name <br />
-    //        </h1>
-    //        <hr />
-    //        <table>
-    //            <tr>
-    //                <td>Enter Email: </td>
-    //                <td>@Html.TextBoxFor(x => comment.CommentedBy)</td>
-    //            </tr>
-    //            <tr>
-    //                <td colspan="2"><input type="submit" value="Submit" /></td>
-    //            </tr>
-    //        </table>
-    //    }
-    // ----------------- END OF TEST -----------------------------------------------------
+    <br />  
 }
 
 

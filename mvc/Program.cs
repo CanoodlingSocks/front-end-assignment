@@ -9,9 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSpaStaticFiles(configuration => {
+builder.Services.AddSpaStaticFiles(configuration =>
+{
     configuration.RootPath = "ReactApp/build";
-    
+
 });
 
 builder.Services.AddCors(options =>
@@ -46,7 +47,7 @@ app.UseAuthorization();
 app.UseCors("react");
 
 app.UseEndpoints(endpoints => endpoints.MapControllerRoute(
-    name: "default", 
+    name: "default",
     pattern: "{controller=News}/{action=StartPage}/{id?}"));
 
 app.UseRouting();
